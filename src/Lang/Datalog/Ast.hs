@@ -1,4 +1,4 @@
-module Ast.Datalog where
+module Lang.Datalog.Ast where
 
 -- Uses the syntax for Datalog as described here:
 -- https://docs.racket-lang.org/datalog/datalog.html
@@ -34,3 +34,5 @@ data Value i
   | BoolConst Bool
 
 newtype Id i = Id i
+
+-- Define the parser
