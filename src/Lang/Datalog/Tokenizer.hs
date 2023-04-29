@@ -1,6 +1,6 @@
 module Lang.Datalog.Tokenizer where
 
-import Parse.Tokenizer (Token)
+import Parse.Tokenizer (Token, tokenize)
 
 data DatalogToken i v
   = LeftParen
@@ -18,4 +18,5 @@ data DatalogToken i v
   | BoolTok Bool
 
 -- TODO: implement tokenization
--- instance Token (DatalogToken i v) where
+instance Token (DatalogToken i v) where
+  tokenize = undefined
