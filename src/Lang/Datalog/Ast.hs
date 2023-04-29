@@ -34,5 +34,3 @@ data Value i
   | BoolConst Bool
 
 newtype Id i = Id i
-
--- Define the parser

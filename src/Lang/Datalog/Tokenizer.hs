@@ -17,4 +17,5 @@ data DatalogToken i v
   | IntTok Integer
   | BoolTok Bool
 
-instance Token (DatalogToken i v) where
+-- TODO: implement tokenization
+-- instance Token (DatalogToken i v) where
