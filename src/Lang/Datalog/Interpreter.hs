@@ -1,3 +1,3 @@
 module Lang.Datalog.Interpreter where
 
-a = 1
+import Interpret.Interpreter ()

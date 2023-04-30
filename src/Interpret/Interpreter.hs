@@ -1,4 +1,6 @@
 module Interpret.Interpreter where
 
+import Control.Monad.State.Lazy (State)
+
 class Interpretable p where
-  interpret :: State p
+  interpret :: State s p
