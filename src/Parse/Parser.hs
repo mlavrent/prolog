@@ -1,5 +1,5 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
 module Parse.Parser where
 
-class Parsable tok ast where
-  parse :: [tok] -> ast
+class Parsable toks ast where
+  parse :: toks -> ast
