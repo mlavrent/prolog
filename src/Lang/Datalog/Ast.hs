@@ -1,32 +1,6 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
 module Lang.Datalog.Ast where
 
-import Parse.Tokenizer (Token, tokenize)
-import Parse.Parser (Parsable, parse)
-
--- Define the tokens for tokenizing the program
-data DatalogToken i v
-  = LeftParen
-  | RightParent
-  | Period
-  | Tilde
-  | QuestionMark
-  | ColonDash
-  | EqSign
-  | NeqSign
-  | VarTok v
-  | IdTok i
-  | StringTok String
-  | IntTok Integer
-  | BoolTok Bool
-
-instance Token (DatalogToken i v) where
-  tokenize = undefined -- TODO:
-
-instance Parsable (DatalogToken i v) (Program i v) where
-  parse = undefined
-
-
 -- The AST below uses the syntax for Datalog as described here:
 -- https://docs.racket-lang.org/datalog/datalog.html
 newtype Program i v = Program [Statement i v]
