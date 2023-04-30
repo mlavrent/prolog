@@ -1,7 +1,6 @@
 module Main (main) where
 
-import Lang.Datalog.Ast ()
-import Lang.Datalog.Interpreter ()
+import Lang.Datalog.Datalog ()
 
 main :: IO ()
 main = do
