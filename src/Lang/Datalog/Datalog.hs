@@ -30,7 +30,7 @@ toProgramState (DatalogState is cs) = Ast.ProgramState is cs
 -- todo: define how results should look and mapping b/w them
 data DatalogResult i v = Result
 
-toDatalogResult :: Ast.QueryResult i v -> DatalogResult i v
+toDatalogResult :: Ast.ProgramResult i v -> DatalogResult i v
 toDatalogResult _ = undefined
 
 instance HasInitialState (DatalogState i v) where
