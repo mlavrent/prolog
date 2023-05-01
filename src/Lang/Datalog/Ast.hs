@@ -1,6 +1,8 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
 module Lang.Datalog.Ast where
 
+import Interpret.Interpreter (Interpretable (interpret))
+
 -- The AST below uses the syntax for Datalog as described here:
 -- https://docs.racket-lang.org/datalog/datalog.html
 newtype Program i v = Program [Statement i v]
@@ -34,3 +36,15 @@ data Value i
   | BoolConst Bool
 
 newtype Id i = Id i
+
+-- Define how to interpret the sub-trees of the Ast
+data ProgramState i v = ProgramState
+  { imports :: [Id i]
+  , clauses :: [Clause i v] }
+
+-- todo: flesh out how this should look
+data QueryResult i v = Result
+
+instance Interpretable (Program i v) (ProgramState i v) (QueryResult i v) where
+  interpret (Program []) = undefined
+  interpret (Program (s:ss)) = undefined
