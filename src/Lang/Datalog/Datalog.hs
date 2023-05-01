@@ -17,15 +17,17 @@ instance Parsable (DatalogToks i v) (Datalog i v) where
   parse = undefined -- TODO:
 
 
-data DatalogState i v = DatalogState
-  { imports :: [Ast.Id i]
-  , clauses :: [Ast.Clause i v] }
+newtype DatalogState i v = DatalogState
+  { clauses :: [Ast.Clause i v] }
 
 toDatalogState :: Ast.ProgramState i v -> DatalogState i v
-toDatalogState (Ast.ProgramState is cs) = DatalogState is cs
+toDatalogState (Ast.ProgramState is) = DatalogState is
 
 toProgramState :: DatalogState i v -> Ast.ProgramState i v
-toProgramState (DatalogState is cs) = Ast.ProgramState is cs
+toProgramState (DatalogState is) = Ast.ProgramState is
+
+instance HasInitialState (DatalogState i v) where
+  initialState = DatalogState []
 
 -- todo: define how results should look and mapping b/w them
 data DatalogResult i v = Result
@@ -33,8 +35,6 @@ data DatalogResult i v = Result
 toDatalogResult :: Ast.ProgramResult i v -> DatalogResult i v
 toDatalogResult _ = undefined
 
-instance HasInitialState (DatalogState i v) where
-  initialState = DatalogState [] []
 
 instance Interpretable (Datalog i v) (DatalogState i v) (DatalogResult i v) where
   interpret (Datalog p) = mapStateAndVal (toDatalogResult *** toDatalogState) toProgramState (interpret p)
