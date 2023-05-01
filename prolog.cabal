@@ -28,3 +28,11 @@ executable prolog
                        -Wmissing-home-modules
                        -Wpartial-fields
                        -Wredundant-constraints
+  other-modules:       Util.State
+                       Parse.Tokenizer
+                       Parse.Parser
+                       Interpret.Interpreter
+                       Interpret.ProgramState
+                       Lang.Datalog.Tokens
+                       Lang.Datalog.Ast
+                       Lang.Datalog.Datalog
