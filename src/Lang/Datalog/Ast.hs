@@ -13,7 +13,6 @@ data Statement i v
   = Assertion (Clause i v)
   | Retraction (Clause i v)
   | Query (Literal i v)
-  | Requirement (Id i)
 
 data Clause i v
   = Rule (Literal i v) [Literal i v]
@@ -59,9 +58,6 @@ instance Interpretable (Statement i v) (ProgramState i v) (Maybe (QueryResult i 
     return Nothing
   interpret (Retraction c) = do
     _ <- modify undefined -- todo: define function to modify state here
-    return Nothing
-  interpret (Requirement i) = do
-    _ <- modify undefined  -- todo: define function to add import here
     return Nothing
   interpret (Query l) = do
     pState <- get
