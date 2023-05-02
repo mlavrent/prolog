@@ -54,14 +54,21 @@ instance Interpretable (Program i v) (ProgramState i v) [QueryResult i v] where
 
 instance Interpretable (Statement i v) (ProgramState i v) (Maybe (QueryResult i v)) where
   interpret (Assertion c) = do
-    _ <- modify undefined -- todo: define function to modify state here
+    _ <- modify (addAssertion c)
     return Nothing
   interpret (Retraction c) = do
-    _ <- modify undefined -- todo: define function to modify state here
+    _ <- modify (retractAssertion c)
     return Nothing
   interpret (Query l) = do
     pState <- get
     return . Just $ evalQuery pState l
 
+addAssertion :: Clause i v -> ProgramState i v -> ProgramState i v
+addAssertion = undefined
+
+retractAssertion :: Clause i v -> ProgramState i v -> ProgramState i v
+retractAssertion = undefined
+
+-- We implement a bottom-up evaluation (i.e. forward reasoning) approach here
 evalQuery :: ProgramState i v -> Literal i v -> QueryResult i v
 evalQuery = undefined -- todo: define query evaluation
